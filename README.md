@@ -1,5 +1,5 @@
 # PacketLimiterQT
-IP Packet Limiter that uses Token Bucket Algorithm to limit the processing speed of packets.
+IP Packet Limiter that uses Token Bucket Algorithm to limit the processing speed of packets. I used [Npcap packet capture libaray](https://npcap.com/) to capture packets and interact with the network traffic. GUI is implemented using [Qt](https://www.qt.io/).
 
 User must enter the location of pcap file that he wiches to process and the processing speed in Mbps
 ![PacketLimiterQT_FUzup64ddV](https://github.com/retroruiner/PacketLimiterQT/assets/65854400/36509773-e47c-426d-b621-fc4b050ec957)
