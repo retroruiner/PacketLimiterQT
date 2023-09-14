@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>365</width>
-    <height>167</height>
+    <width>369</width>
+    <height>160</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -85,7 +85,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>365</width>
+     <width>369</width>
      <height>22</height>
     </rect>
    </property>
@@ -104,22 +104,5 @@
  <resources>
   <include location="PacketLimiterQT.qrc"/>
  </resources>
- <connections>
-  <connection>
-   <sender>Ok_Button</sender>
-   <signal>clicked()</signal>
-   <receiver>RateSpinBox</receiver>
-   <slot>clear()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>201</x>
-     <y>117</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>291</x>
-     <y>90</y>
-    </hint>
-   </hints>
-  </connection>
- </connections>
+ <connections/>
 </ui>

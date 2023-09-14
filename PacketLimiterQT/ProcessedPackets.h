@@ -9,7 +9,7 @@ class ProcessedPackets : public QWidget
 	Q_OBJECT
 
 public:
-	ProcessedPackets(std::vector<PcapHandlers::PacketInfo> packetInfo, QWidget *parent = nullptr);
+	ProcessedPackets(std::vector<PcapHandlers::PacketInfo> packetInfo, int totalPackets, int missedPackets, int processedPackets, QWidget *parent = nullptr);
 	
 	~ProcessedPackets();
 

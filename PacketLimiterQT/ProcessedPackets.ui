@@ -68,40 +68,79 @@
   <widget class="QLabel" name="TotalNumPackLabel">
    <property name="geometry">
     <rect>
+     <x>190</x>
+     <y>220</y>
+     <width>141</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>TextLabel</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="ProcessPackLabel">
+   <property name="geometry">
+    <rect>
+     <x>190</x>
+     <y>260</y>
+     <width>131</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>TextLabel</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="MissedPackLabel">
+   <property name="geometry">
+    <rect>
+     <x>190</x>
+     <y>240</y>
+     <width>151</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>TextLabel</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
      <x>20</x>
-     <y>210</y>
-     <width>311</width>
-     <height>16</height>
+     <y>220</y>
+     <width>171</width>
+     <height>20</height>
     </rect>
    </property>
    <property name="text">
     <string>Total number of packets:</string>
    </property>
   </widget>
-  <widget class="QLabel" name="ProcessPackLabel">
+  <widget class="QLabel" name="label_2">
    <property name="geometry">
     <rect>
      <x>20</x>
-     <y>230</y>
-     <width>301</width>
+     <y>240</y>
+     <width>151</width>
      <height>16</height>
     </rect>
    </property>
    <property name="text">
-    <string>Processed packets:</string>
+    <string>Number of missed packets:</string>
    </property>
   </widget>
-  <widget class="QLabel" name="MissedPackLabel">
+  <widget class="QLabel" name="label_3">
    <property name="geometry">
     <rect>
      <x>20</x>
-     <y>250</y>
-     <width>321</width>
+     <y>260</y>
+     <width>171</width>
      <height>16</height>
     </rect>
    </property>
    <property name="text">
-    <string>Missed packets:</string>
+    <string>Number of processed packets:</string>
    </property>
   </widget>
  </widget>

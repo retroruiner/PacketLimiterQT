@@ -23,7 +23,9 @@ public:
 	PcapHandlers(const char* inputPcap, const char* outputPcap, RateLimiter& packetLimiter);
 	bool openDumpers();
 	void processPackets();
-	void printNumOfPackets();
+	int getTotalPack();
+	int getMissedPack();
+	int getProcessedPack();
 	std::vector<PacketInfo> getStoredPacketInfo();
 	~PcapHandlers();
 
@@ -68,9 +70,6 @@ private:
 	std::vector<ip_address> storedIPAddresses;
 	std::vector<int> storedPacketLengths;
 	std::vector<time_t> storedTimestamps;
-	struct tm ltime;
-	char timestr[16];
-
 
 };
 

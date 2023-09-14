@@ -36,7 +36,9 @@ void PcapHandlers::processPackets() {
             // Packet consumed within the rate, dump to processed pcap file
             pcap_dump((u_char*)pcapDumper, &header, packet_data);
 
-            ip_header* ih = (ip_header*)packet_data;
+            //retireve the position of the ip header
+            ip_header* ih = (ip_header*)(packet_data + 18); //length of ethernet header
+        
             ip_address source_ip = ih->saddr;
             ip_address dest_ip = ih->daddr;
             storedIPAddresses.push_back(source_ip);
@@ -62,12 +64,16 @@ void PcapHandlers::processPackets() {
     }
 }
 
-void PcapHandlers::printNumOfPackets() {
-    // Print completion message
-    std::cout << "Rate limited pcap generation complete." << std::endl;
-    std::cout << "Total number of packets: " << totalPackets << std::endl;
-    std::cout << "Packets processed: " << packetsProcessed << std::endl;
-    std::cout << "Packets missed: " << packetsMissed << std::endl;
+int PcapHandlers::getTotalPack() {
+    return totalPackets;
+}
+
+int PcapHandlers::getMissedPack() {
+    return packetsMissed;
+}
+
+int PcapHandlers::getProcessedPack() {
+    return packetsProcessed;
 }
 
 std::vector<PcapHandlers::PacketInfo> PcapHandlers::getStoredPacketInfo()
@@ -78,12 +84,14 @@ std::vector<PcapHandlers::PacketInfo> PcapHandlers::getStoredPacketInfo()
         const ip_address& dest_ip = storedIPAddresses[i + 1];
 
         // Retrieve packet length and timestamp
-        int packet_length = storedPacketLengths[i/2];
-        time_t timestamp = storedTimestamps[i/2];
+        int packet_length = storedPacketLengths[i / 2];
+        time_t timestamp = storedTimestamps[i / 2];
 
         // Convert timestamp to a readable format
+        struct tm ltime;
+        char timestr[16];
         localtime_s(&ltime, &timestamp);
-        strftime(timestr, sizeof timestr, "%Y-%m-%d %H:%M:%S", &ltime);
+        strftime(timestr, sizeof timestr, "%H:%M:%S", &ltime);
 
         // Build IP address strings
         std::string source_ip_str = std::to_string(source_ip.byte1) + "." +
@@ -101,7 +109,8 @@ std::vector<PcapHandlers::PacketInfo> PcapHandlers::getStoredPacketInfo()
         packetInfo.sourceIP = source_ip_str;
         packetInfo.destIP = dest_ip_str;
         packetInfo.packetLength = packet_length;
-        packetInfo.timestamp = timestr;
+        std::string time(timestr);
+        packetInfo.timestamp = time;
 
         packetInfoList.push_back(packetInfo);
     }

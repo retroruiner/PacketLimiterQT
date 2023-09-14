@@ -1,6 +1,6 @@
 #include "ProcessedPackets.h"
 
-ProcessedPackets::ProcessedPackets(std::vector<PcapHandlers::PacketInfo> packetInfo, QWidget *parent)
+ProcessedPackets::ProcessedPackets(std::vector<PcapHandlers::PacketInfo> packetInfo, int totalPackets, int missedPackets, int processedPackets, QWidget *parent)
 	: QWidget(parent)
 {
 	ui.setupUi(this);
@@ -17,6 +17,9 @@ ProcessedPackets::ProcessedPackets(std::vector<PcapHandlers::PacketInfo> packetI
 		ui.PacketsTable->setItem(i, 3, new QTableWidgetItem(QString(QString::fromStdString(packetInfo.at(i).timestamp))));
 	}
 	
+	ui.TotalNumPackLabel->setText(QString::number(totalPackets));
+	ui.MissedPackLabel->setText(QString::number(missedPackets));
+	ui.ProcessPackLabel->setText(QString::number(processedPackets));
 }
 
 void ProcessedPackets::onButtonClicked() {

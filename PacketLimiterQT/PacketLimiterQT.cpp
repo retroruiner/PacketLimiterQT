@@ -17,6 +17,8 @@ void PacketLimiterQT::onButtonClicked() {
     std::string tempStr = fileLocation.toStdString();
     const char* fileLocationChar = tempStr.c_str();
 
+    rateMbps = ui.RateSpinBox->value();
+
    
     //C:/Users/Adilet/Documents/NPcap/Missed.pcap
 
@@ -26,7 +28,7 @@ void PacketLimiterQT::onButtonClicked() {
         pcapHandle.openDumpers();
         pcapHandle.processPackets();
 
-        packets = new ProcessedPackets(pcapHandle.getStoredPacketInfo());
+        packets = new ProcessedPackets(pcapHandle.getStoredPacketInfo(), pcapHandle.getTotalPack(), pcapHandle.getMissedPack(), pcapHandle.getProcessedPack());
         packets->show();
     }
     catch (const std::invalid_argument& e) {
